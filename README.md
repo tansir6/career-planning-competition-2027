@@ -5,7 +5,9 @@
 
 ![全国大学生职业规划大赛指导 Skill](assets/banner.png)
 
-一个面向全国大学生职业规划大赛的免费开源 Codex Skill，支持成长赛道和就业赛道备赛。它会按官方评分标准帮助参赛者梳理真实经历、建立证据链，并完成或审核生涯发展报告、求职简历、展示 PPT、陈述稿、证明材料和答辩内容。
+一个面向全国大学生职业规划大赛的开源 Agent Skill，支持成长赛道和就业赛道备赛。它会按官方评分标准帮助参赛者梳理真实经历、建立证据链，并完成或审核生涯发展报告、求职简历、展示 PPT、陈述稿、证明材料和答辩内容。
+
+> 本仓库基于 [6laoliu6/career-planning-competition-cn-skill](https://github.com/6laoliu6/career-planning-competition-cn-skill)（MIT）fork，已将默认基线升级到第四届（2026—2027）并新增电气工程方向定制包。
 
 **适用关键词：** 全国大学生职业规划大赛、职规赛、成长赛道、就业赛道、生涯发展报告、求职简历、展示 PPT、答辩训练、Codex Skill、职业规划。
 
@@ -22,33 +24,37 @@
 
 ## 评分基线
 
-Skill 默认采用第三届全国大学生职业规划大赛（2025—2026）国家方案作为基线：
+本仓库默认采用**第四届全国大学生职业规划大赛（2026—2027）**国家方案作为基线（2026.10—2027.4，重庆主办）：
 
-- 成长赛道：职业目标 30 分，学习实践行动 50 分，优化改进 20 分
-- 就业赛道：职业目标 10 分，综合素质 40 分，专业能力 40 分，发展潜力 10 分
+- 成长赛道：职业目标 25 分，学习实践行动 50 分，优化改进 25 分；国赛环节为主题陈述7分钟、评委提问5分钟、天降实习offer 2分钟
+- 就业赛道：职业目标 10 分，综合素质 40 分，专业能力 40 分，发展潜力 10 分；国赛环节为主题陈述6分钟、综合面试6分钟、天降offer 2分钟
 
-校赛、省赛或后续届次的通知与评分表优先于默认基线。涉及资格、材料要求、比赛流程或权重时，应以当届主办方正式文件为准。
+校赛、省赛或后续届次的通知与评分表优先于默认基线。涉及资格、材料要求、比赛流程或权重时，应以当届主办方正式文件为准。第三届（2025—2026）权重仅作历史对照。
 
 官方参考：
 
-- [教育部关于举办第三届全国大学生职业规划大赛的通知](https://hudong.moe.gov.cn/srcsite/A15/s7063/202510/t20251021_1417550.html)
+- [教育部关于举办第四届全国大学生职业规划大赛的通知（教学函〔2026〕2号）](https://hudong.moe.gov.cn/srcsite/A15/s7063/202610/t20261010_1453481.html)
 - [全国大学生职业规划大赛平台](https://zgs.chsi.com.cn/)
 
 ## 安装
 
-使用 Git 克隆到 Codex 的 Skills 目录：
+兼容 Codex、Claude Code、DSH（DeepSeek Harness）等支持标准 Agent Skills（SKILL.md + references 目录）的客户端。把整个仓库放到任一被扫描的 skills 目录即可：
 
-```powershell
-git clone https://github.com/6laoliu6/career-planning-competition-cn-skill.git "$HOME/.codex/skills/career-planning-competition"
+```bash
+# Codex
+git clone https://github.com/<你的用户名>/<仓库名>.git "$HOME/.codex/skills/career-planning-competition"
+# Claude Code
+git clone https://github.com/<你的用户名>/<仓库名>.git "$HOME/.claude/skills/career-planning-competition"
+# DSH：放入 ~/.dsh/skills 或在「设置 → Agent Skills」导入整个目录/zip
 ```
 
-也可以下载仓库后手动复制，并确保最终路径如下：
+也可以下载仓库后手动复制，确保最终路径含 `SKILL.md`：
 
 ```text
-~/.codex/skills/career-planning-competition/SKILL.md
+<skills目录>/career-planning-competition/SKILL.md
 ```
 
-安装后重新打开 Codex 会话，或在新的对话中使用。
+安装后重新打开会话，或在新的对话中使用。
 
 ## 使用示例
 
@@ -78,7 +84,8 @@ git clone https://github.com/6laoliu6/career-planning-competition-cn-skill.git "
     ├── growth-track.md
     ├── employment-track.md
     ├── deliverables.md
-    └── defense-and-audit.md
+    ├── defense-and-audit.md
+    └── electrical-growth-track.md   # 电气工程方向定制包（可选）
 ```
 
 ## 使用原则
